@@ -3,9 +3,9 @@
 pub mod problems;
 use problems::p0001::*;
 use problems::p0002::*;
+use problems::p0003::*;
 
 fn main() {
     println!("Solutions: ");
-    p0001();
-    p0002();
+    p0003();
 }
