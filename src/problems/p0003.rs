@@ -4,7 +4,7 @@ pub fn p0003() {
     let mut primes: Vec<u64> = vec![];
 
     let mut i = 3u64;
-    while nbr > limit {
+    while nbr >= limit {
         if nbr % i == 0 {
             primes.push(i);
             nbr = nbr / i;
