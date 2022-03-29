@@ -13,5 +13,6 @@ pub fn p0003() {
             i += 2;
         }
     }
+    println!("Problem 0003 Solution:");
     println!("{}", primes.iter().max().unwrap());
 }
