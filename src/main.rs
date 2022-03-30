@@ -7,8 +7,9 @@ use problems::p0003::*;
 use problems::p0004::*;
 use problems::p0005::*;
 use problems::p0006::*;
+use problems::p0007::*;
 
 fn main() {
     println!("Solutions: ");
-    p0006();
+    p0007();
 }
