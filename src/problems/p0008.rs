@@ -20,8 +20,8 @@ pub fn p0008() {
     84580156166097919133875499200524063689912560717606
     05886116467109405077541002256983155200055935729725
     71636269561882670428252483600823257530420752963450";
-    let s: String = s.replace("\n", "");
-    let s: String = s.replace(" ", "");
+    let s: String = s.replace('\n', "");
+    let s: String = s.replace(' ', "");
     
     let v: Vec<u64> = s.chars().map(|x| x as u64 - ('0' as u64)).collect();
     // now we have a vector of digits of the number.
@@ -36,8 +36,8 @@ pub fn p0008() {
             // this is a canditate. we mult together the first 13 numbers.
             
             let mut m = arr[0];
-            for i in 1..windowsize {
-                m*=arr[i];
+            for i in arr.iter().take(windowsize).skip(1) {
+                m*=i;
             }
             if m > maximum {
                 maximum = m;

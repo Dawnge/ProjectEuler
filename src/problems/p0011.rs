@@ -35,7 +35,7 @@ pub fn p0011() {
         let mut r: Vec<u8> = vec![];
         for nbr in split {
             let chrs = nbr.as_bytes();
-            r.push((chrs[0] - 48) * 10 + (chrs[1] - 48) * 1);
+            r.push((chrs[0] - 48) * 10 + (chrs[1] - 48));
         }
         data.push(r);
     }

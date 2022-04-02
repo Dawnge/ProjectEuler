@@ -7,7 +7,8 @@ fn is_pal(mut i: u32) -> bool {
     }
     let mut r = v.clone();
     r.reverse();
-    return r == v;
+    
+    r == v
 }
 
 pub fn p0004() {

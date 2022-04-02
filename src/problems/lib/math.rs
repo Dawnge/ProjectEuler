@@ -11,6 +11,12 @@ pub struct SieveOfEratosthenes {
     pub primes: Vec<u64>,
 }
 
+impl Default for SieveOfEratosthenes {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl SieveOfEratosthenes {
 
     fn is_prime_unsafe(&self, n: u64,  limit: u64) -> bool {
@@ -72,11 +78,7 @@ impl SieveOfEratosthenes {
             // the number is in the sieve -> extract it, if 1 => return true else false.
             let i = n / 8;
             let bit_shift = n % 8;
-            if self.sieve[i as usize] & 1u8<<bit_shift == 0 {
-                false
-            } else {
-                true
-            }
+            self.sieve[i as usize] & 1u8<<bit_shift != 0
         } else {
             let sqrt_n = (n as f64).sqrt().ceil() as u64;
             self.extend_capacity_to(sqrt_n); // this makes the next step safe
@@ -98,7 +100,7 @@ impl SieveOfEratosthenes {
         while p <= nbr_sqrt {
             if nbr % p == 0 {
                 factors.push(p);
-                nbr = nbr / p;
+                nbr /= p;
                 nbr_sqrt = (nbr as f64).sqrt() as u64 + 1;
             } else {
                 if i == self.primes.len() - 1 {

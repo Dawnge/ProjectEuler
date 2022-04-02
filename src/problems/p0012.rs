@@ -116,24 +116,24 @@ fn factor_count(prime_factors: Vec<u64>) -> u64 {
     // f = 3,1,1
 
     // edge case
-    if prime_factors.len() == 0 {
+    if prime_factors.is_empty() {
         return 1;
     }
 
     let mut f: Vec<u64> = vec![];
     let mut last_p = prime_factors[0];
     let mut last_p_count = 1;
-    for i in 1..prime_factors.len() {
-        if prime_factors[i] == last_p {
+    for i in prime_factors.iter().skip(1) {
+        if *i == last_p {
             last_p_count+=1;
         } else {
             f.push(last_p_count);
             last_p_count = 1;
-            last_p = prime_factors[i];
+            last_p = *i;
         }
     }
     f.push(last_p_count);
-    f.iter().fold(1, |mut acc, val| {acc*=(val+1); acc})
+    f.iter().fold(1, |mut acc, val| {acc*=val+1; acc})
    
 }
 
@@ -160,12 +160,11 @@ pub fn p0012() {
     let mut fc_old = factor_count(sieve.prime_factors(i/2));
 
     loop {
-        let fc_new;
-        if i % 2 == 0 {
-            fc_new = factor_count(sieve.prime_factors(i+1));
+        let fc_new = if i % 2 == 0 {
+            factor_count(sieve.prime_factors(i+1))
         } else {
-            fc_new = factor_count(sieve.prime_factors((i+1)/2));
-        }
+            factor_count(sieve.prime_factors((i+1)/2))
+        };
         let fc = fc_new * fc_old;
         if fc > min_divisor_count {
             break;

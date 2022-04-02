@@ -8,13 +8,13 @@ pub fn prime_factors(nbr: u64) -> Vec<u64> {
     while nbr >= limit {
         if nbr % i == 0 {
             primes.push(i);
-            nbr = nbr / i;
+            nbr /= i;
             limit = (nbr as f64).sqrt() as u64 + 1;
         } else {
             i += 1;
         }
     }
-    return primes;
+    primes
 }
 
 pub fn p0005() {
@@ -58,9 +58,9 @@ pub fn p0005() {
     
     let mut res = 1;
 
-    for i in 2..limit+1 {
-        if v[i] != 0 {
-            res *= (i as u64).checked_pow(v[i] as u32).unwrap();
+    for (i, val) in v.iter().enumerate().take(limit+1).skip(2) {
+        if *val != 0 {
+            res *= (i as u64).checked_pow(*val as u32).unwrap();
         } 
     }
 
