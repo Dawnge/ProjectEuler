@@ -16,8 +16,9 @@ use problems::p0012::*;
 use problems::p0013::*;
 use problems::p0014::*;
 use problems::p0015::*;
+use problems::p0016::*;
 
 fn main() {
     println!("Solutions: ");
-    p0015();
+    p0016();
 }
